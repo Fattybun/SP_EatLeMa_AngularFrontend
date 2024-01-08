@@ -23,4 +23,5 @@ export class GeneralService {
     // this.currentRoute = component;
     this.router.navigate([component])
   }
+
 }

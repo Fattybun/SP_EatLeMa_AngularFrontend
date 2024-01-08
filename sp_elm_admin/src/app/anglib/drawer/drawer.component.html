@@ -3,14 +3,14 @@
         <h2>EatLeMa!</h2>
 
         <mat-list>
-            <a mat-list-item *ngFor="let item of management" (click)="general.redirect(item?.routerLink ?? '')">
+            <a mat-list-item *ngFor="let item of management" [ngClass]="{'isActive': general.currentRoute === item.routerLink}" (click)="general.redirect(item?.routerLink ?? '')">
                 <mat-icon>{{ item.icon }}</mat-icon>
                 <span>{{ item.name }}</span>
             </a>
 
             <mat-divider></mat-divider>
 
-            <a mat-list-item *ngFor="let item of preference" (click)="general.redirect(item?.routerLink ?? '')">
+            <a mat-list-item *ngFor="let item of preference" [ngClass]="{'isActive': general.currentRoute === item.routerLink}" (click)="general.redirect(item?.routerLink ?? '')">
                 <mat-icon>{{ item.icon }}</mat-icon>
                 <span>{{ item.name }}</span>
             </a>
@@ -21,7 +21,11 @@
         <div class="sidenav_toolbar">
             <mat-toolbar>
                 <span>{{ page }}</span>
-                <span class="material-icons">notifications</span>
+                <div class="icons">
+                    <span class="material-symbols-outlined">notifications</span>
+                    <span class="material-icons" (click)="general.redirect('profile')">account_circle</span>
+                </div>
+
             </mat-toolbar>
         </div>
 

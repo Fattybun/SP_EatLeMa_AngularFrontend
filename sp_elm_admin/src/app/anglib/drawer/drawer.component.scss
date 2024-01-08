@@ -21,16 +21,25 @@ body {
         }
 
         mat-list {
+
+            // border: 1px solid red;
             a {
                 cursor: pointer;
 
-                .mdc-list-item__content .mdc-list-item__primary-text {
-                    gap: 5px;
-                    display: flex;
-                    color: #ffffff;
-                    align-items: center;
+                // .mdc-list-item__content .mdc-list-item__primary-text {
+                //     gap: 15px;
+                //     display: flex;
+                //     color: #ffffff;
+                //     align-items: center;
+                // }
 
+                &.isActive {
+                    background-color: #ffffff;
 
+                    mat-icon,
+                    span {
+                        color: #000000;
+                    }
                 }
 
                 &:hover {
@@ -54,10 +63,34 @@ body {
 
         .sidenav_toolbar {
             top: 0;
+            z-index: 1;
             position: sticky;
 
             mat-toolbar {
                 background-color: #ffffff;
+
+                .icons {
+                    right: 0;
+                    display: flex;
+                    position: absolute;
+                    align-items: center;
+                    // transform: translateX(-50%);
+
+                    .material-icons, .material-symbols-outlined {
+                        cursor: pointer;
+                        color: #18224b;
+                        padding: 0 5px 0 5px;
+                    }
+
+                    .material-icons:nth-child(2) {
+                        font-size: 32px;
+                        color: rgb(192, 192, 192);
+
+                        &:hover {
+                            color: rgb(180, 180, 180);
+                        }
+                    }
+                }
             }
         }
 

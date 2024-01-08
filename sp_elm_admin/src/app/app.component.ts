@@ -36,6 +36,9 @@ export class AppComponent implements AfterContentChecked {
       case 'setting':
         this.pages = 'Setting';
         break;
+      case 'profile':
+        this.pages = 'Profile';
+        break;
     }
   }
 }

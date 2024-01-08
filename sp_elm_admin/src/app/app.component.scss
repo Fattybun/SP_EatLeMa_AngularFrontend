@@ -11,26 +11,28 @@ body {
     border: 1px solid rgba(0, 0, 0, 0.5);
 
     .sidenav {
-        width: 20%;
-        padding: 20px;
-        color: #ffffff;
-        background-color: #18224b;
+        // width: 20%;
+        // padding: 20px;
+        // color: #ffffff;
+        // background-color: #18224b;
 
-        h2 {
-            text-align: center;
-        }
+        // h2 {
+        //     text-align: center;
+        // }
 
         mat-list {
+            gap: 10px;
+            display: flex;
+            flex-direction: column;
+
             a {
                 cursor: pointer;
 
                 .mdc-list-item__content .mdc-list-item__primary-text {
-                    gap: 5px;
+                    gap: 15px;
                     display: flex;
                     color: #ffffff;
                     align-items: center;
-
-
                 }
 
                 &:hover {
@@ -47,24 +49,25 @@ body {
                 border-top-color: #ffffff;
             }
         }
-    }
 
-    .main_content {
-        height: 100%;
+        // }
 
-        .sidenav_toolbar {
-            top: 0;
-            position: sticky;
+        //     .main_content {
+        //         height: 100%;
 
-            mat-toolbar {
-                background-color: #ffffff;
-            }
-        }
+        //         .sidenav_toolbar {
+        //             top: 0;
+        //             position: sticky;
 
-        .sidenav_content {
-            height: 100%;
-            padding: 16px;
-            background-color: #f7f9fb;
-        }
+        //             mat-toolbar {
+        //                 background-color: #ffffff;
+        //             }
+        //         }
+
+        // .sidenav_content {
+        //     height: 100%;
+        //     padding: 16px;
+        //     background-color: #f7f9fb;
+        // }
     }
 }
