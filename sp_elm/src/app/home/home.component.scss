@@ -1,0 +1,95 @@
+mat-toolbar {
+    color: white;
+    background-color: #0059b3;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    margin-top: 50px;
+    align-items: center;
+    border: 1px solid blue;
+
+    .lottery {
+        flex: 2;
+        display: grid;
+        place-items: center;
+        border: 1px solid red;
+
+        .lottery-skin {
+            // display: flex;
+            // justify-content: center;
+            // align-items: center;
+            height: 350px;
+            width: 350px;
+            background: blue;
+            position: relative;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 0 10px grey;
+            transition: 3s all;
+
+            div {
+                height: 50%;
+                width: 200px;
+                clip-path: polygon(100% 0, 50% 100%, 0 0);
+                position: absolute;
+                transform: translateX(-50%);
+                transform-origin: bottom;
+                left: 21.5%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 20px;
+                font-weight: 1000;
+                font-family: monospace;
+                letter-spacing: 5px;
+                writing-mode: vertical-rl;
+
+                &.one {
+                    background: white;
+                    left: 50%;
+                }
+
+                &.two {
+                    background: blue;
+                    transform: rotate(60deg);
+                }
+
+                &.three {
+                    background: white;
+                    transform: rotate(120deg);
+                }
+
+                &.four {
+                    background: blue;
+                    transform: rotate(180deg);
+                }
+
+                &.five {
+                    background: white;
+                    transform: rotate(240deg);
+                }
+
+                &.six {
+                    background: blue;
+                    transform: rotate(300deg);
+                }
+            }
+        }
+
+        // .spinner {
+        //     height: 25px;
+        //     width: 25px;
+        //     border-radius: 50%;
+        //     position: absolute;
+        //     background: red;
+        // }
+    }
+
+    .restaurant-list {
+        flex: 1;
+        border: 1px solid yellow;
+    }
+
+}
