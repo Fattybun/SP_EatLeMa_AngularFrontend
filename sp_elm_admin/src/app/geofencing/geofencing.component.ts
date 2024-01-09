@@ -13,4 +13,6 @@ import { MatAccordion } from '@angular/material/expansion';
 
 export class GeofencingComponent {
   @ViewChild(MatAccordion) accordion!: MatAccordion;
+
+  selected = 'option2';
 }
