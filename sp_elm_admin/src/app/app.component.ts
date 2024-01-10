@@ -34,7 +34,7 @@ export class AppComponent implements AfterContentChecked {
         this.pages = 'Geofencing Configuration';
         break;
       case 'setting':
-        this.pages = 'Setting';
+        this.pages = 'General Setting';
         break;
       case 'profile':
         this.pages = 'Profile';

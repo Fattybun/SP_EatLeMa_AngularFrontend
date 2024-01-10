@@ -22,3 +22,19 @@ mat-accordion {
         }
     }
 }
+
+.action_buttons {
+    gap: 10px;
+    display: flex;
+    margin-top: 20px;
+    justify-content: flex-end;
+
+    button {
+        width: 10%;
+    }
+
+    button:nth-child(2) {
+        color: #ffffff;
+        background-color: #18224b;
+    }
+}
