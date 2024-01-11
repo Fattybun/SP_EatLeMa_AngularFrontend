@@ -1,0 +1,26 @@
+mat-toolbar {
+    color: white;
+    display: flex;
+    align-items: center;
+    // border: 1px solid yellow;
+    background-color: #0059b3;
+
+    .catalogs {
+        flex: 1;
+        gap: 20px;
+        display: flex;
+        padding-right: 10px;
+        justify-content: flex-end;
+        // border: 1px solid red;
+
+        .material-symbols-outlined {
+            cursor: pointer;
+        }
+
+        .material-symbols-outlined:nth-child(2) {
+            &:hover {
+                color: rgb(224, 215, 215);
+            }
+        }
+    }
+}

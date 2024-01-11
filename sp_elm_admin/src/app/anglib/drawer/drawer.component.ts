@@ -15,7 +15,6 @@ export interface SideNavItem {
   imports: [CommonModule, AnglibModule],
   templateUrl: './drawer.component.html',
   styleUrls: ['./drawer.component.scss'],
-  // encapsulation: ViewEncapsulation.None
 })
 
 export class DrawerComponent {
