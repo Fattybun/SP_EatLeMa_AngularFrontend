@@ -1,4 +1,4 @@
-# Angular Project README
+# EatLeMa SideProject README
 
 This README provides instructions for starting an Angular project by cloning the git repository and lists the prerequisites needed to get started.
 
