@@ -1,0 +1,106 @@
+.body_container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 7%;
+
+    .auth_container {
+        display: flex;
+        // align-items: center;
+        justify-content: center;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        // border: 1px solid blueviolet;
+
+        .info_container {
+            flex: 1;
+            background: #0059b3;
+            color: white;
+            // border: 1px solid green;
+
+            .info_context {
+                padding: 170px 50px;
+                text-align: center;
+
+                button {
+                    background-color: transparent;
+                    color: white;
+                    border-color: white;
+                }
+            }
+        }
+
+        .form_container {
+            flex: 2;
+
+            .form_context {
+                padding: 20px 50px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+
+                h1 {
+                    color: #0059b3;
+                }
+
+                .signin_methods {
+                    gap: 20px;
+                    display: flex;
+                    padding: 20px 0;
+
+                    button {
+                        color: #303030;
+                        background: transparent;
+
+                        i {
+                            &.bi-google {
+                                color: red;
+                            }
+
+                            &.bi-facebook {
+                                color: #0866ff;
+                            }
+
+                            font-size: 16px;
+                        }
+                    }
+                }
+
+                .text {
+                    color: #bababa;
+                    font-size: 12px;
+                }
+
+                .forgotpwd {
+                    font-size: 12px;
+                    color:#bababa;
+                    cursor: pointer;
+
+                    &:hover {
+                        color: #0059b3;
+                    }
+
+                    padding-top: 20px;
+                }
+
+                form {
+                    width: 60%;
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                .submit_btn {
+                    background-color: #0059b3;
+                    color: white;
+                    border-color: white;
+                    width: 25%;
+                    position: absolute;
+                    bottom: 0;
+                    margin-bottom: 20px;
+
+                    &:disabled {
+                        opacity: 0.5;
+                    }
+                }
+            }
+        }
+    }
+}

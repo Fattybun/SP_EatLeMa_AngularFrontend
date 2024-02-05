@@ -1,0 +1,99 @@
+<!-- Expansion Panel -->
+<div class="geofence-action-buttons">
+    <button mat-button (click)="accordion.openAll()">Expand All</button>
+    <button mat-button (click)="accordion.closeAll()">Collapse All</button>
+</div>
+
+<mat-accordion class="example-headers-align" multi>
+    <mat-expansion-panel disabled>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <b>Geofence Shape</b>
+            </mat-panel-title>
+            <mat-panel-description style="color:red">
+                Currently not available
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <div class="expansion_panel_content">
+            <mat-form-field>
+                <mat-label>Select an option</mat-label>
+                <mat-select [(value)]="selected">
+                  <mat-option>None</mat-option>
+                  <mat-option value="option1">Circle</mat-option>
+                  <mat-option value="option2">Triangle</mat-option>
+                  <mat-option value="option3">Square</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+            <mat-slide-toggle color="primary"></mat-slide-toggle>
+        </div>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel expanded>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <b>Geofence Tolerance</b>
+            </mat-panel-title>
+            <!-- <mat-panel-description>
+                Type your name and age
+            </mat-panel-description> -->
+        </mat-expansion-panel-header>
+
+        <div class="expansion_panel_content">
+            <mat-form-field>
+                <mat-label>Default 200m</mat-label>
+                <input matInput>
+            </mat-form-field>
+
+            <mat-slide-toggle color="primary"></mat-slide-toggle>
+        </div>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel expanded>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <b>Geofence Activation</b>
+            </mat-panel-title>
+            <!-- <mat-panel-description>
+                Type the country name
+            </mat-panel-description> -->
+        </mat-expansion-panel-header>
+
+        <div class="expansion_panel_content">
+            <mat-label>Geofence Deactivated</mat-label>
+            <!-- <mat-form-field>
+                <mat-label>First name</mat-label>
+                <input matInput>
+            </mat-form-field> -->
+
+            <mat-slide-toggle color="primary"></mat-slide-toggle>
+        </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel expanded>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <b>Geolocation Activity Log</b>
+            </mat-panel-title>
+            <!-- <mat-panel-description>
+                Inform the date you wish to travel
+            </mat-panel-description> -->
+        </mat-expansion-panel-header>
+
+        <div class="expansion_panel_content">
+            <mat-label>Disabled Geofence Activity Log</mat-label>
+
+            <mat-slide-toggle color="primary"></mat-slide-toggle>
+        </div>
+
+    </mat-expansion-panel>
+
+</mat-accordion>
+
+<div class="action_buttons">
+    <button mat-raised-button>Cancel</button>
+    <button mat-raised-button>Save</button>
+</div>

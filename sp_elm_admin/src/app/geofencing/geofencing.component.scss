@@ -1,0 +1,40 @@
+.geofence-action-buttons {
+    padding: 0 0 15px 0;
+}
+
+mat-accordion {
+    mat-expansion-panel {
+        .expansion_panel_content {
+            display: flex;
+            align-items: center;
+            
+            // border: 1px solid red;
+
+            mat-slide-toggle {
+                // display: flex;
+                right: 0;
+                position: absolute;
+                transform: translateX(-100%);
+                // float: right;
+                // justify-content: end;
+                // border: 1px solid red;
+            }
+        }
+    }
+}
+
+.action_buttons {
+    gap: 10px;
+    display: flex;
+    margin-top: 20px;
+    justify-content: flex-end;
+
+    button {
+        width: 10%;
+    }
+
+    button:nth-child(2) {
+        color: #ffffff;
+        background-color: #18224b;
+    }
+}

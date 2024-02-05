@@ -1,0 +1,42 @@
+<!-- Expansion Panel -->
+<div class="geofence-action-buttons">
+    <button mat-button (click)="accordion.openAll()">Expand All</button>
+    <button mat-button (click)="accordion.closeAll()">Collapse All</button>
+</div>
+
+<mat-accordion class="example-headers-align" multi>
+
+    <mat-expansion-panel expanded>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <b>Wheel Skin</b>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="expansion_panel_content">
+            <mat-label>Will change to select field later</mat-label>
+
+            <mat-slide-toggle color="primary"></mat-slide-toggle>
+        </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel expanded>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <b>Wheel Algorithm</b>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="expansion_panel_content">
+            <mat-label>Will change to select field later</mat-label>
+
+            <mat-slide-toggle color="primary"></mat-slide-toggle>
+        </div>
+    </mat-expansion-panel>
+
+</mat-accordion>
+
+<div class="action_buttons">
+    <button mat-raised-button>Cancel</button>
+    <button mat-raised-button>Save</button>
+</div>

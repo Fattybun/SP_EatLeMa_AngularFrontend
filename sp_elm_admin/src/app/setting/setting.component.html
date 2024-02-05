@@ -1,0 +1,28 @@
+<!-- Expansion Panel -->
+<div class="geofence-action-buttons">
+    <button mat-button (click)="accordion.openAll()">Expand All</button>
+    <button mat-button (click)="accordion.closeAll()">Collapse All</button>
+</div>
+
+<mat-accordion class="example-headers-align" multi>
+
+    <mat-expansion-panel expanded>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <b>Notifications</b>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="expansion_panel_content">
+            <mat-label>Turn Off Notification</mat-label>
+
+            <mat-slide-toggle color="primary"></mat-slide-toggle>
+        </div>
+    </mat-expansion-panel>
+
+</mat-accordion>
+
+<div class="action_buttons">
+    <button mat-raised-button>Cancel</button>
+    <button mat-raised-button>Save</button>
+</div>

@@ -1,0 +1,27 @@
+<app-drawer *ngIf="general.currentRoute !== ''">
+    <div class="container">
+        <div class="lottery">
+            <div class="lottery-skin">
+                <div *ngFor="let store of nearestRestaurants" class="one">{{ store.place_name }}</div>
+                <!-- <div class="two">two</div>
+                <div class="three">three</div>
+                <div class="four">four</div>
+                <div class="five">five</div>
+                <div class="six">six</div> -->
+            </div>
+
+            <span class="spinner"></span>
+            <button>Spin</button>
+        </div>
+
+        <div class="restaurant-list">
+            <mat-list>
+                <mat-list-item *ngFor="let restaurant of nearestRestaurants">
+                    <!-- <mat-icon></mat-icon> -->
+                    <div matListItemTitle>{{ restaurant.place_name }}</div>
+                    <div matListItemLine>{{ restaurant.formatted_address }}</div>
+                </mat-list-item>
+            </mat-list>
+        </div>
+    </div>
+</app-drawer>

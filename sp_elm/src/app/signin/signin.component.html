@@ -1,1 +1,103 @@
-<p>signin works!</p>
+<div class="body_container">
+    <div class="auth_container">
+        <div class="form_container" [@swapFormContainers]="formState">
+            <div class="form_context" *ngIf="viewMode === 0">
+                <h1>Sign in to EatLeMa?</h1>
+
+                <div class="signin_methods">
+                    <button mat-mini-fab><i class="bi bi-apple"></i></button>
+                    <button mat-mini-fab><i class="bi bi-google"></i></button>
+                    <button mat-mini-fab><i class="bi bi-facebook"></i></button>
+                    <button mat-mini-fab><i class="bi bi-person-fill"></i></button>
+                </div>
+
+                <p class="text">OR</p>
+
+                <form [formGroup]="signInForm">
+                    <mat-form-field appearance="outline">
+                        <mat-label>UID</mat-label>
+                        <input matInput type="text" placeholder="Enter your uid" formControlName="uid">
+                        <mat-error *ngIf="signInForm.get('uid')?.hasError('required')">
+                            uid is required.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password" placeholder="Enter your password" formControlName="password">
+                        <mat-error *ngIf="signInForm.get('password')?.hasError('required') || signInForm.get('uid')?.touched">
+                            password is required.
+                        </mat-error>
+                        <mat-error *ngIf="signInForm.get('password')?.hasError('pattern') || signInForm.get('password')?.touched || signInForm.get('password')?.dirty">
+                            password must contains at least 8 characters, and combination of uppercase, lowercase, numbers, and special character.
+                        </mat-error>
+                    </mat-form-field>
+                    
+                </form>
+
+                <p class="forgotpwd"><a><u><i>Forgot your password?</i></u></a></p>
+
+                <button class="submit_btn" mat-stroked-button [disabled]="signInForm.invalid" (click)="general.redirect('home')">SIGN IN</button>
+            </div>
+
+            <div class="form_context" *ngIf="viewMode === 1">
+                <h1>Create Account</h1>
+
+                <div class="signin_methods">
+                    <button mat-mini-fab><i class="bi bi-apple"></i></button>
+                    <button mat-mini-fab><i class="bi bi-google"></i></button>
+                    <button mat-mini-fab><i class="bi bi-facebook"></i></button>
+                    <button mat-mini-fab><i class="bi bi-person-fill"></i></button>
+                </div>
+
+                <p class="text">OR</p>
+
+                <form [formGroup]="signUpForm">
+                    <mat-form-field appearance="outline">
+                        <mat-label>UID</mat-label>
+                        <input matInput type="text" placeholder="Enter your uid" formControlName="uid">
+                        <mat-error *ngIf="signUpForm.get('uid')?.hasError('required') || signUpForm.get('uid')?.touched">
+                            uid is required.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password" placeholder="Enter your password" formControlName="password">
+                        <mat-error *ngIf="signUpForm.get('password')?.hasError('required') || signUpForm.get('password')?.touched">
+                            password is required.
+                        </mat-error>
+
+                        <mat-error *ngIf="signUpForm.get('password')?.hasError('pattern') || signUpForm.get('password')?.touched">
+                            password must contains at least 8 characters, and combination of uppercase, lowercase, numbers, and special character.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Confirm Password</mat-label>
+                        <input matInput type="password" placeholder="Re-Enter your password" formControlName="confirmpassword">
+                        <mat-error *ngIf="signUpForm.get('password')?.value !== signUpForm.get('confirmpassword')?.value || signUpForm.get('confirmpassword')?.touched">
+                            password does not matched.
+                        </mat-error>
+                    </mat-form-field>
+
+                </form>
+                <button class="submit_btn" type="submit" mat-stroked-button [disabled]="signUpForm.invalid">SIGN UP</button>
+            </div>
+        </div>
+
+        <div class="info_container" [@swapInfoContainers]="infoState">
+            <div class="info_context" *ngIf="viewMode === 0">
+                <h1>Hello, Friends!</h1>
+                <p>Enter your credentials detail and start a journey with us!</p>
+                <button mat-stroked-button (click)="swapContainers()">SIGN UP</button>
+            </div>
+
+            <div class="info_context" *ngIf="viewMode === 1">
+                <h1>Welcome Back!</h1>
+                <p>To keep connected with us plese login with your personal info.</p>
+                <button mat-stroked-button (click)="swapContainers()">SIGN IN</button>
+            </div>
+        </div>
+    </div>
+</div>
