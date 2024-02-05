@@ -16,6 +16,7 @@ declare var google: any;
 })
 
 export class HomeComponent {
+
   nearestRestaurants: {
     place_name: string,
     formatted_address: string
@@ -40,6 +41,16 @@ export class HomeComponent {
 
     })
 
+  }
+
+  spinWheel() {
+    console.log('click!');
+
+    let wheel = document.querySelector('.wheel') as HTMLElement;
+    let value = Math.ceil(Math.random() * 3600)
+
+    wheel.style.transform = 'rotate(' + value +'deg)';
+    value += Math.ceil(Math.random() * 3600)
   }
 
   geocodeLatLng(coord: any) {
@@ -70,7 +81,7 @@ export class HomeComponent {
           console.error('NearbySearch failed with status:', nearbyStatus);
           return;
         }
-        
+
         const first10Results = nearbyResults.slice(0, 10);
 
         const promises = first10Results.map((place: any) => {
@@ -96,7 +107,7 @@ export class HomeComponent {
                 formatted_address: formattedAddresses[index]
               }));
             })
-            
+
 
             console.log('nearest', this.nearestRestaurants)
 

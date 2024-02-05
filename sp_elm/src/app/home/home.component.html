@@ -1,17 +1,14 @@
 <app-drawer *ngIf="general.currentRoute !== ''">
-    <div class="container">
-        <div class="lottery">
-            <div class="lottery-skin">
-                <div *ngFor="let store of nearestRestaurants" class="one">{{ store.place_name }}</div>
-                <!-- <div class="two">two</div>
-                <div class="three">three</div>
-                <div class="four">four</div>
-                <div class="five">five</div>
-                <div class="six">six</div> -->
-            </div>
+    <!-- <div class="container"> -->
 
-            <span class="spinner"></span>
-            <button>Spin</button>
+        <div class="wheel-container">
+            <div class="wheel">
+                <div *ngFor="let restaurant of nearestRestaurants; let i = index" class="wheel_item" [ngStyle]="{'--i': i}">
+                    <span>{{ restaurant.place_name }}</span>
+                </div>
+            </div>
+            
+            <div class="spinButton" (click)="spinWheel()">Spin</div>
         </div>
 
         <div class="restaurant-list">
@@ -23,5 +20,5 @@
                 </mat-list-item>
             </mat-list>
         </div>
-    </div>
+    <!-- </div> -->
 </app-drawer>
