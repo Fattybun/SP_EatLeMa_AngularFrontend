@@ -15,13 +15,18 @@ mat-toolbar {
 
         .material-symbols-outlined {
             cursor: pointer;
-        }
 
-        .material-symbols-outlined:nth-child(2) {
             &:hover {
                 color: rgb(224, 215, 215);
             }
         }
+
+        // .material-symbols-outlined:nth-child(2) {
+        //     &:hover {
+        //         color: red;
+        //         // background: red;
+        //     }
+        // }
     }
 }
 

@@ -1,9 +1,10 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone, TemplateRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GeolocationService } from '../services/geolocation/geolocation.service';
 import { AnglibModule } from '../anglib/anglib.module';
 import { GeneralService } from '../services/general/general.service';
 import { DrawerComponent } from '../anglib/drawer/drawer.component';
+import { MatDialog } from '@angular/material/dialog';
 
 declare var google: any;
 
@@ -16,6 +17,7 @@ declare var google: any;
 })
 
 export class HomeComponent {
+  @ViewChild('resultDialog') resultDialog = {} as TemplateRef<any>;
 
   nearestRestaurants: {
     place_name: string,
@@ -23,9 +25,11 @@ export class HomeComponent {
   }[] = [];
 
   formatted_address: any;
+  wheel_itemIndex: any;
 
   constructor(
     private zone: NgZone,
+    private dialog: MatDialog,
     public general: GeneralService,
     private geolocation: GeolocationService
   ) { }
@@ -43,14 +47,60 @@ export class HomeComponent {
 
   }
 
+  openDialog() {
+    setTimeout(() => {
+      this.dialog.open(this.resultDialog, {
+        data: this.nearestRestaurants[this.wheel_itemIndex + 1].place_name,
+        height: '150px',
+        width: '300px',
+        
+      });
+    }, 5000)
+  }
+
   spinWheel() {
-    console.log('click!');
+    let value = ((Math.ceil(Math.random() * 3600) %360 + 360) % 360);
 
-    let wheel = document.querySelector('.wheel') as HTMLElement;
-    let value = Math.ceil(Math.random() * 3600)
+    console.log('check initial value', value)
 
-    wheel.style.transform = 'rotate(' + value +'deg)';
-    value += Math.ceil(Math.random() * 3600)
+    let spinButton = document.querySelector('.spinButton') as HTMLElement;
+    let items = document.querySelectorAll('.wheel_item') as NodeListOf<HTMLElement>;
+
+    if (value <= 36) {
+      value = 72;
+    } else if (value > 36 && value <= 72) {
+      value = 108;
+    } else if (value > 72 && value <= 108) {
+      value = 144;
+    } else if (value > 108 && value <= 144) {
+      value = 180;
+    } else if (value > 144 && value <= 180) {
+      value = 216;
+    } else if (value > 180 && value <= 216) {
+      value = 252;
+    } else if (value > 216 && value <= 252) {
+      value = 288;
+    } else if (value > 252 && value <= 288) {
+      value = 324;
+    } else if (value > 288 && value <= 324) {
+      value = 360;
+    } else if (value > 324 && value <= 360) {
+      value = 396;
+    }
+
+    spinButton.style.transform = 'rotate(' + value + 'deg)';
+
+    // console.log('check value', value);
+
+    this.wheel_itemIndex = Math.floor(value / (360 / items.length)) % items.length;
+
+    // console.log('check index', this.wheel_itemIndex);
+
+    value += value;
+
+    // console.log('check value after', value)
+
+    this.openDialog();
   }
 
   geocodeLatLng(coord: any) {
@@ -108,10 +158,6 @@ export class HomeComponent {
               }));
             })
 
-
-            console.log('nearest', this.nearestRestaurants)
-
-            console.log('length', this.nearestRestaurants.length);
           })
           .catch((error) => {
             console.error('Error fetching details:', error);
