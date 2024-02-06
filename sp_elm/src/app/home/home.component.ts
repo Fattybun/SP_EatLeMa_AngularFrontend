@@ -53,39 +53,21 @@ export class HomeComponent {
         data: this.nearestRestaurants[this.wheel_itemIndex + 1].place_name,
         height: '150px',
         width: '300px',
-        
+
       });
     }, 5000)
   }
 
   spinWheel() {
-    let value = ((Math.ceil(Math.random() * 3600) %360 + 360) % 360);
+    let value = ((Math.ceil(Math.random() * 3600) % 360 + 360) % 360);
 
     console.log('check initial value', value)
 
     let spinButton = document.querySelector('.spinButton') as HTMLElement;
     let items = document.querySelectorAll('.wheel_item') as NodeListOf<HTMLElement>;
 
-    if (value <= 36) {
-      value = 72;
-    } else if (value > 36 && value <= 72) {
-      value = 108;
-    } else if (value > 72 && value <= 108) {
-      value = 144;
-    } else if (value > 108 && value <= 144) {
-      value = 180;
-    } else if (value > 144 && value <= 180) {
-      value = 216;
-    } else if (value > 180 && value <= 216) {
-      value = 252;
-    } else if (value > 216 && value <= 252) {
-      value = 288;
-    } else if (value > 252 && value <= 288) {
-      value = 324;
-    } else if (value > 288 && value <= 324) {
-      value = 360;
-    } else if (value > 324 && value <= 360) {
-      value = 396;
+    if (value <= 360) {
+      value = Math.ceil(value / 36) * 36;
     }
 
     spinButton.style.transform = 'rotate(' + value + 'deg)';
