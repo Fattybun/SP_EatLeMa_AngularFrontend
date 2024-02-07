@@ -1,4 +1,4 @@
-import { Component, NgZone, TemplateRef, ViewChild } from '@angular/core';
+import { Component, NgZone, QueryList, TemplateRef, ViewChild, ViewChildren } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GeolocationService } from '../services/geolocation/geolocation.service';
 import { AnglibModule } from '../anglib/anglib.module';
@@ -18,6 +18,7 @@ declare var google: any;
 
 export class HomeComponent {
   @ViewChild('resultDialog') resultDialog = {} as TemplateRef<any>;
+  @ViewChildren('wheelItem') wheelItems!: QueryList<HTMLElement>;
 
   nearestRestaurants: {
     place_name: string,
@@ -53,16 +54,15 @@ export class HomeComponent {
         data: this.nearestRestaurants[this.wheel_itemIndex + 1].place_name,
         height: '150px',
         width: '300px',
-
+        panelClass: 'dialog_box',
+        exitAnimationDuration: 1000,
+        enterAnimationDuration: 1000
       });
     }, 5000)
   }
 
   spinWheel() {
     let value = ((Math.ceil(Math.random() * 3600) % 360 + 360) % 360);
-
-    console.log('check initial value', value)
-
     let spinButton = document.querySelector('.spinButton') as HTMLElement;
     let items = document.querySelectorAll('.wheel_item') as NodeListOf<HTMLElement>;
 
@@ -72,15 +72,9 @@ export class HomeComponent {
 
     spinButton.style.transform = 'rotate(' + value + 'deg)';
 
-    // console.log('check value', value);
-
     this.wheel_itemIndex = Math.floor(value / (360 / items.length)) % items.length;
 
-    // console.log('check index', this.wheel_itemIndex);
-
     value += value;
-
-    // console.log('check value after', value)
 
     this.openDialog();
   }

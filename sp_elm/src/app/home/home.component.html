@@ -1,9 +1,8 @@
 <app-drawer *ngIf="general.currentRoute !== ''">
-    <!-- <div class="container"> -->
 
     <div class="wheel-container">
         <div class="wheel">
-            <div *ngFor="let restaurant of nearestRestaurants; let i = index" class="wheel_item" [ngStyle]="{'--i': i}">
+            <div #wheelItem *ngFor="let restaurant of nearestRestaurants; let i = index" class="wheel_item" [ngStyle]="{'--i': i}">
                 <span>{{ restaurant.place_name }}</span>
             </div>
         </div>        
@@ -11,14 +10,8 @@
         <div class="spinButton" (click)="spinWheel()">Spin</div>
     </div>
 
-    <!-- <div class="dialog_container">
-        <div class="dialog_box">
-            <span>{{ nearestRestaurants[wheel_itemIndex + 1]?.place_name }}</span>
-        </div>
-    </div> -->
-
     <ng-template #resultDialog class="dialog_box">
-        <div mat-dialog-content>{{ nearestRestaurants[wheel_itemIndex]?.place_name }}</div>
+        <div mat-dialog-content>{{ nearestRestaurants[wheel_itemIndex].place_name }}</div>
     </ng-template>  
 
     <div class="restaurant-list">
@@ -31,5 +24,5 @@
             </mat-list-item>
         </mat-list>
     </div>
-    <!-- </div> -->
+
 </app-drawer>
