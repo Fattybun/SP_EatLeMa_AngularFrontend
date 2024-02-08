@@ -2,6 +2,10 @@
 
 This README provides instructions for starting an Angular project by cloning the git repository and lists the prerequisites needed to get started.
 
+## Summary
+
+The primary objective of this project is to aid those who struggle with decision-making by offering a system that showcases the ten closest restaurants based on the user's location.  Introducing an element of surprise and excitement, the system incorporates a spinning wheel, enabling users to randomly select a restaurant.  This feature adds an element of unpredictability, encouraging users to explore new or hidden dining establishments, leading to unique and potentially unexpected culinary experiences, ranging from delightful surprises to potential disappointments in terms of taste.
+
 ## Prerequisites
 
 Before starting the project, please ensure that you have the following prerequisites installed:
