@@ -17,22 +17,24 @@
                     <mat-form-field appearance="outline">
                         <mat-label>UID</mat-label>
                         <input matInput type="text" placeholder="Enter your uid" formControlName="uid">
-                        <mat-error *ngIf="signInForm.get('uid')?.hasError('required')">
-                            uid is required.
-                        </mat-error>
+                        
                     </mat-form-field>
+
+                    <div class="error_message" *ngIf="signInForm.get('uid')?.hasError('required') && signInForm.get('uid')?.touched">
+                        uid is required.
+                    </div>
 
                     <mat-form-field appearance="outline">
                         <mat-label>Password</mat-label>
                         <input matInput type="password" placeholder="Enter your password" formControlName="password">
-                        <mat-error *ngIf="signInForm.get('password')?.hasError('required') || signInForm.get('uid')?.touched">
-                            password is required.
-                        </mat-error>
-                        <mat-error *ngIf="signInForm.get('password')?.hasError('pattern') || signInForm.get('password')?.touched || signInForm.get('password')?.dirty">
-                            password must contains at least 8 characters, and combination of uppercase, lowercase, numbers, and special character.
-                        </mat-error>
                     </mat-form-field>
-                    
+
+                    <div class="error_message" *ngIf="signInForm.get('password')?.hasError('required') && signInForm.get('password')?.touched">
+                        password is required.
+                    </div>
+                    <div class="error_message" *ngIf="signInForm.get('password')?.hasError('pattern') || signInForm.get('password')?.touched && signInForm.get('password')?.dirty">
+                        password must contains at least 8 characters, and combination of uppercase, lowercase, numbers, and special character.
+                    </div>
                 </form>
 
                 <p class="forgotpwd"><a><u><i>Forgot your password?</i></u></a></p>
@@ -56,30 +58,35 @@
                     <mat-form-field appearance="outline">
                         <mat-label>UID</mat-label>
                         <input matInput type="text" placeholder="Enter your uid" formControlName="uid">
-                        <mat-error *ngIf="signUpForm.get('uid')?.hasError('required') || signUpForm.get('uid')?.touched">
-                            uid is required.
-                        </mat-error>
                     </mat-form-field>
+
+                    <div class="error_message" *ngIf="signUpForm.get('uid')?.hasError('required') && signUpForm.get('uid')?.touched">
+                        uid is required.
+                    </div>
 
                     <mat-form-field appearance="outline">
                         <mat-label>Password</mat-label>
                         <input matInput type="password" placeholder="Enter your password" formControlName="password">
-                        <mat-error *ngIf="signUpForm.get('password')?.hasError('required') || signUpForm.get('password')?.touched">
-                            password is required.
-                        </mat-error>
-
-                        <mat-error *ngIf="signUpForm.get('password')?.hasError('pattern') || signUpForm.get('password')?.touched">
-                            password must contains at least 8 characters, and combination of uppercase, lowercase, numbers, and special character.
-                        </mat-error>
                     </mat-form-field>
+
+                    <div class="error_message" *ngIf="signUpForm.get('password')?.hasError('required') && signUpForm.get('password')?.touched">
+                        password is required.
+                    </div>
+                    <div class="error_message" *ngIf="signUpForm.get('pattern')?.hasError('required') || signUpForm.get('password')?.touched && signUpForm.get('password')?.dirty">
+                        password must contains at least 8 characters, and combination of uppercase, lowercase, numbers, and special character.
+                    </div>
 
                     <mat-form-field appearance="outline">
                         <mat-label>Confirm Password</mat-label>
                         <input matInput type="password" placeholder="Re-Enter your password" formControlName="confirmpassword">
-                        <mat-error *ngIf="signUpForm.get('password')?.value !== signUpForm.get('confirmpassword')?.value || signUpForm.get('confirmpassword')?.touched">
-                            password does not matched.
-                        </mat-error>
                     </mat-form-field>
+
+                    <div class="error_message" *ngIf="signUpForm.get('confirmpassword')?.hasError('required') && signUpForm.get('confirmpassword')?.touched">
+                        re-enter password is required.
+                    </div>
+                    <div class="error_message" *ngIf="signUpForm.get('password')?.value !== signUpForm.get('confirmpassword')?.value || signUpForm.get('confirmpassword')?.touched && signUpForm.get('confirmpassword')?.dirty">
+                        password does not matched.
+                    </div>
 
                 </form>
                 <button class="submit_btn" type="submit" mat-stroked-button [disabled]="signUpForm.invalid">SIGN UP</button>
