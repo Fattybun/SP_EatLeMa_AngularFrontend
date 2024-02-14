@@ -38,9 +38,14 @@ export class HomeComponent {
   ngOnInit() {
 
     this.geolocation.getCurrentPosition().then((response) => {
-      console.log('pos', response);
+      // console.log('pos', response);
 
       let value = response.lat + "," + response.lng;
+
+      this.geolocation.reverseGeocode(response.lat, response.lng).then((place: any) => {
+        this.nearestRestaurants = place
+        console.log(this.nearestRestaurants)
+      })
 
       this.geocodeLatLng(value);
 
@@ -80,66 +85,68 @@ export class HomeComponent {
   }
 
   geocodeLatLng(coord: any) {
-    const geocoder = new google.maps.Geocoder();
-    const places = new google.maps.places.PlacesService(document.createElement('div'));
-    const input = coord;
+    console.log('coord', coord);
 
-    const latlngStr = input.split(",", 2);
-    const latlng = {
-      lat: parseFloat(latlngStr[0]),
-      lng: parseFloat(latlngStr[1])
-    };
+    // const geocoder = new google.maps.Geocoder();
+    // const places = new google.maps.places.PlacesService(document.createElement('div'));
+    // const input = coord;
 
-    geocoder.geocode({ location: latlng }, (results: any, status: any) => {
-      if (status !== 'OK' || !results || results.length === 0) {
-        console.error('Geocoder failed with status:', status);
-        return;
-      }
+    // const latlngStr = input.split(",", 2);
+    // const latlng = {
+    //   lat: parseFloat(latlngStr[0]),
+    //   lng: parseFloat(latlngStr[1])
+    // };
 
-      const request = {
-        location: latlng,
-        radius: 2000,
-        type: 'restaurant',
-      };
+    // geocoder.geocode({ location: latlng }, (results: any, status: any) => {
+    //   if (status !== 'OK' || !results || results.length === 0) {
+    //     console.error('Geocoder failed with status:', status);
+    //     return;
+    //   }
 
-      places.nearbySearch(request, (nearbyResults: any, nearbyStatus: any) => {
-        if (nearbyStatus !== google.maps.places.PlacesServiceStatus.OK) {
-          console.error('NearbySearch failed with status:', nearbyStatus);
-          return;
-        }
+    //   const request = {
+    //     location: latlng,
+    //     radius: 2000,
+    //     type: 'restaurant',
+    //   };
 
-        const first10Results = nearbyResults.slice(0, 10);
+    //   places.nearbySearch(request, (nearbyResults: any, nearbyStatus: any) => {
+    //     if (nearbyStatus !== google.maps.places.PlacesServiceStatus.OK) {
+    //       console.error('NearbySearch failed with status:', nearbyStatus);
+    //       return;
+    //     }
 
-        const promises = first10Results.map((place: any) => {
-          const detailsRequest = { placeId: place.place_id };
+    //     const first10Results = nearbyResults.slice(0, 10);
 
-          return new Promise<string>((resolve, reject) => {
-            places.getDetails(detailsRequest, (result: any) => {
-              if (result && result.formatted_address) {
-                resolve(result.formatted_address);
-              } else {
-                reject('No formatted address found');
-              }
-            });
-          });
-        });
+    //     const promises = first10Results.map((place: any) => {
+    //       const detailsRequest = { placeId: place.place_id };
 
-        Promise.all(promises)
-          .then((formattedAddresses: string[]) => {
+    //       return new Promise<string>((resolve, reject) => {
+    //         places.getDetails(detailsRequest, (result: any) => {
+    //           if (result && result.formatted_address) {
+    //             resolve(result.formatted_address);
+    //           } else {
+    //             reject('No formatted address found');
+    //           }
+    //         });
+    //       });
+    //     });
 
-            this.zone.run(() => {
-              this.nearestRestaurants = first10Results.map((place: any, index: number) => ({
-                place_name: place.name,
-                formatted_address: formattedAddresses[index]
-              }));
-            })
+    //     Promise.all(promises)
+    //       .then((formattedAddresses: string[]) => {
 
-          })
-          .catch((error) => {
-            console.error('Error fetching details:', error);
-          });
-      });
-    });
+    //         this.zone.run(() => {
+    //           this.nearestRestaurants = first10Results.map((place: any, index: number) => ({
+    //             place_name: place.name,
+    //             formatted_address: formattedAddresses[index]
+    //           }));
+    //         })
+
+    //       })
+    //       .catch((error) => {
+    //         console.error('Error fetching details:', error);
+    //       });
+    //   });
+    // });
   }
 
 

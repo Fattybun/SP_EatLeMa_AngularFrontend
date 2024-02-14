@@ -2,23 +2,23 @@
 
     <div class="wheel-container">
         <div class="wheel">
-            <div #wheelItem *ngFor="let restaurant of nearestRestaurants; let i = index" class="wheel_item" [ngStyle]="{'--i': i}">
+            <div #wheelItem *ngFor="let restaurant of nearestRestaurants; let i = index" class="wheel_item"
+                [ngStyle]="{'--i': i}">
                 <span>{{ restaurant.place_name }}</span>
             </div>
-        </div>        
+        </div>
 
         <div class="spinButton" (click)="spinWheel()">Spin</div>
     </div>
 
     <ng-template #resultDialog class="dialog_box">
         <div mat-dialog-content>{{ nearestRestaurants[wheel_itemIndex].place_name }}</div>
-    </ng-template>  
+    </ng-template>
 
     <div class="restaurant-list">
         <h3>10 Most Nearest Restaurants</h3>
         <mat-list>
             <mat-list-item *ngFor="let restaurant of nearestRestaurants">
-                <!-- <mat-icon></mat-icon> -->
                 <div matListItemTitle>{{ restaurant.place_name }}</div>
                 <div matListItemLine>{{ restaurant.formatted_address }}</div>
             </mat-list-item>
