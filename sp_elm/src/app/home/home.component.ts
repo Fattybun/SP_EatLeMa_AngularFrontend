@@ -24,8 +24,6 @@ export class HomeComponent {
     place_name: string,
     formatted_address: string
   }[] = [];
-
-  formatted_address: any;
   wheel_itemIndex: any;
 
   constructor(
@@ -38,8 +36,6 @@ export class HomeComponent {
   ngOnInit() {
 
     this.geolocation.getCurrentPosition().then((response) => {
-
-      let value = response.lat + "," + response.lng;
 
       this.geolocation.reverseGeocode(response.lat, response.lng).then((place: any) => {
         this.nearestRestaurants = place;
