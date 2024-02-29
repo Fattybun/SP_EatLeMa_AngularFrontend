@@ -1,0 +1,14 @@
+<button *ngIf="button_config.mode === 'basic'" mat-button [ngStyle]="button_config.customCSS">{{ button_config.label }}</button>
+<button *ngIf="button_config.mode === 'raised'" mat-raised-button [ngStyle]="button_config.customCSS">{{ button_config.label }}</button>
+<button *ngIf="button_config.mode === 'stroked'" mat-stroked-button [ngStyle]="button_config.customCSS">{{ button_config.label }}</button>
+<button *ngIf="button_config.mode === 'flat'" mat-flat-button [ngStyle]="button_config.customCSS">{{ button_config.label }}</button>
+
+<button *ngIf="button_config.mode === 'icon'" mat-icon-button [ngStyle]="button_config.customCSS">
+    <mat-icon>{{ button_config.icon }}</mat-icon>
+</button>
+<button *ngIf="button_config.mode === 'fab'" mat-fab [ngStyle]="button_config.customCSS">
+    <mat-icon>{{ button_config.icon }}</mat-icon>
+</button>
+<button *ngIf="button_config.mode === 'minifab'" mat-mini-fab [ngStyle]="button_config.customCSS">
+    <mat-icon>{{ button_config.icon }}</mat-icon>
+</button>

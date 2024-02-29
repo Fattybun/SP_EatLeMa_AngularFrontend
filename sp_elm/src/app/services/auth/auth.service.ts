@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -6,16 +7,15 @@ import { Injectable } from '@angular/core';
 
 export class AuthService {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
-  userSignIn() {
-    fetch('http://localhost:3001/signin', { method: "POST" })
-      .then(response => response.json())
-      .then(data => data)
-      .catch((error) => console.log(`Error: ${error}`));
-  }
+  userSignIn() {}
   
-  userSignUp() {}
+  userSignUp(body: any) {
+    return this.http.post('http://localhost:5000/admin/auth/signup', body)
+  }
 
   userLogout() {}
 

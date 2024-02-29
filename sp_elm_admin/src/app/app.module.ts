@@ -12,7 +12,6 @@ import { HistoryComponent } from './history/history.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SettingComponent } from './setting/setting.component';
 import { WheelConfComponent } from './wheel-conf/wheel-conf.component';
-
 @NgModule({
   declarations: [
     AppComponent,

@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AnglibModule } from '../anglib/anglib.module';
 import { GeneralService } from '../services/general/general.service';
+import { ButtonComponent, button } from '../anglib/button/button.component';
 
 @Component({
   selector: 'app-auth',
   standalone: true,
-  imports: [CommonModule, AnglibModule, ReactiveFormsModule],
+  imports: [CommonModule, AnglibModule, ReactiveFormsModule, ButtonComponent],
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
   // encapsulation: ViewEncapsulation.None
@@ -32,5 +33,10 @@ export class AuthComponent {
         Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)
       ]))
     })
+  }
+
+  signinButtonConfig: button = {
+    mode: 'raised',
+    label: 'Text'
   }
 }

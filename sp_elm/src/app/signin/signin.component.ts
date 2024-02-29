@@ -8,6 +8,8 @@ import { trigger, state, style, transition, animate, keyframes } from '@angular/
 import { interval, take } from 'rxjs';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { GeneralService } from '../services/general/general.service';
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../services/auth/auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -56,7 +58,8 @@ export class SigninComponent {
 
   constructor(
     public general: GeneralService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -95,4 +98,15 @@ export class SigninComponent {
     })
   }
 
+  userSignup() {
+    console.log('clicked!')
+    const bodyRequest = {
+      uid: this.signUpForm.value.uid,
+      password: this.signUpForm.value.password,
+      confirmPassword: this.signUpForm.value.confirmPassword
+    }
+
+    this.authService.userSignUp(bodyRequest)
+  }
+  
 }

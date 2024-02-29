@@ -84,12 +84,12 @@
                     <div class="error_message" *ngIf="signUpForm.get('confirmpassword')?.hasError('required') && signUpForm.get('confirmpassword')?.touched">
                         re-enter password is required.
                     </div>
-                    <div class="error_message" *ngIf="signUpForm.get('password')?.value !== signUpForm.get('confirmpassword')?.value || signUpForm.get('confirmpassword')?.touched && signUpForm.get('confirmpassword')?.dirty">
+                    <div class="error_message" *ngIf="signUpForm.get('confirmpassword')?.value !== signUpForm.get('password')?.value || signUpForm.get('confirmpassword')?.touched">
                         password does not matched.
                     </div>
 
                 </form>
-                <button class="submit_btn" type="submit" mat-stroked-button [disabled]="signUpForm.invalid">SIGN UP</button>
+                <button class="submit_btn" type="submit" mat-stroked-button [disabled]="signUpForm.invalid" (click)="userSignup()">SIGN UP</button>
             </div>
         </div>
 
