@@ -22,8 +22,9 @@ export class HomeComponent {
 
   nearestRestaurants: {
     place_name: string,
-    formatted_address: string
+    place_address: string
   }[] = [];
+
   wheel_itemIndex: any;
 
   constructor(
