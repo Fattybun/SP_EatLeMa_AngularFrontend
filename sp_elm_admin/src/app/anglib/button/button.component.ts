@@ -1,14 +1,18 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AnglibModule } from '../anglib.module';
+import { AnglibModule, TooltipPosition } from '../anglib.module';
 
 export interface button {
   icon?: string,
-  label?: string,
   function?: {},
-  disabled?: boolean,
   customCSS?: {},
-  mode: 'basic' | 'raised' | 'stroked' | 'flat' | 'icon' | 'fab' | 'minifab'
+  label?: string,
+  disabled?: boolean,
+  mode: 'basic' | 'raised' | 'stroked' | 'flat' | 'icon' | 'fab' | 'minifab',
+  enabledTooltip?: {
+    tooltip_label: string,
+    tooltip_position: 'below' | 'above' | 'left' | 'right' | 'before' | 'after'
+  }
 }
 
 @Component({
@@ -22,13 +26,13 @@ export interface button {
 export class ButtonComponent {
 
   @Input() button_config: button = {
-      label: 'Label',
-      mode: 'basic',
-      customCSS: {
-        color: 'blue'
-      },
-      disabled: false,
-    }
+    label: 'Label',
+    mode: 'basic',
+    customCSS: {
+      color: 'blue'
+    },
+    disabled: false,
+  }
 
   @Output() eventHandle: EventEmitter<string> = new EventEmitter<string>();
 
@@ -43,7 +47,12 @@ export class ButtonComponent {
       disabled: this.button_config.disabled || false,
       customCSS: this.button_config.customCSS || {},
       function: this.button_config.function || undefined,
-      icon: this.button_config.icon || undefined
+      icon: this.button_config.icon || undefined,
+      enabledTooltip: {
+        tooltip_label: this.button_config.enabledTooltip!.tooltip_label || 'Label',
+        tooltip_position: this.button_config.enabledTooltip!.tooltip_position || 'below'
+      }
+
     }
   }
 

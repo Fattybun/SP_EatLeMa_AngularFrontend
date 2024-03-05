@@ -1,14 +1,129 @@
-<button *ngIf="button_config.mode === 'basic'" mat-button [ngStyle]="button_config.customCSS">{{ button_config.label }}</button>
-<button *ngIf="button_config.mode === 'raised'" mat-raised-button [ngStyle]="button_config.customCSS">{{ button_config.label }}</button>
-<button *ngIf="button_config.mode === 'stroked'" mat-stroked-button [ngStyle]="button_config.customCSS">{{ button_config.label }}</button>
-<button *ngIf="button_config.mode === 'flat'" mat-flat-button [ngStyle]="button_config.customCSS">{{ button_config.label }}</button>
+<!-- Button without Tooltip -->
+<button 
+    mat-button
+    [ngStyle]="button_config.customCSS"
+    *ngIf="button_config.mode === 'basic' && !button_config.enabledTooltip">
+    
+    {{ button_config.label }}
+</button>
 
-<button *ngIf="button_config.mode === 'icon'" mat-icon-button [ngStyle]="button_config.customCSS">
+<button 
+    mat-raised-button
+    [ngStyle]="button_config.customCSS"
+    *ngIf="button_config.mode === 'raised' && !button_config.enabledTooltip">
+    
+    {{ button_config.label }}
+</button>
+
+<button 
+    mat-stroked-button
+    [ngStyle]="button_config.customCSS"
+    *ngIf="button_config.mode === 'stroked' && !button_config.enabledTooltip">
+    
+    {{ button_config.label }}
+</button>
+
+<button 
+    mat-flat-button
+    [ngStyle]="button_config.customCSS"
+    *ngIf="button_config.mode === 'flat' && !button_config.enabledTooltip">
+    
+    {{ button_config.label }}
+</button>
+
+<!-- Icon Button -->
+<button 
+    mat-fab
+    [ngStyle]="button_config.customCSS"
+    *ngIf="button_config.mode === 'fab' && !button_config.enabledTooltip">
+    
     <mat-icon>{{ button_config.icon }}</mat-icon>
 </button>
-<button *ngIf="button_config.mode === 'fab'" mat-fab [ngStyle]="button_config.customCSS">
+
+<button 
+    mat-icon-button
+    [ngStyle]="button_config.customCSS"
+    *ngIf="button_config.mode === 'icon' && !button_config.enabledTooltip">
+    
     <mat-icon>{{ button_config.icon }}</mat-icon>
 </button>
-<button *ngIf="button_config.mode === 'minifab'" mat-mini-fab [ngStyle]="button_config.customCSS">
+
+<button 
+    mat-mini-fab
+    [ngStyle]="button_config.customCSS"
+    *ngIf="button_config.mode === 'minifab' && !button_config.enabledTooltip">
+    
+    <mat-icon>{{ button_config.icon }}</mat-icon>
+</button>
+
+<!-- Button with Tooltip -->
+<button 
+    mat-button
+    [ngStyle]="button_config.customCSS"
+    *ngIf="button_config.mode === 'basic' && button_config.enabledTooltip"
+    matTooltip="{{button_config.enabledTooltip.tooltip_label}}"
+    [matTooltipPosition]="button_config.enabledTooltip.tooltip_position">
+    
+    {{ button_config.label }}
+</button>
+
+<button 
+    mat-raised-button
+    [ngStyle]="button_config.customCSS"
+    *ngIf="button_config.mode === 'raised' && button_config.enabledTooltip"
+    matTooltip="{{button_config.enabledTooltip.tooltip_label}}"
+    [matTooltipPosition]="button_config.enabledTooltip.tooltip_position">
+    
+    {{ button_config.label }}
+</button>
+
+<button 
+    mat-stroked-button
+    [ngStyle]="button_config.customCSS"
+    *ngIf="button_config.mode === 'stroked' && button_config.enabledTooltip"
+    matTooltip="{{button_config.enabledTooltip.tooltip_label}}"
+    [matTooltipPosition]="button_config.enabledTooltip.tooltip_position">
+    
+    {{ button_config.label }}
+</button>
+
+<button 
+    mat-flat-button
+    [ngStyle]="button_config.customCSS"
+    *ngIf="button_config.mode === 'flat' && button_config.enabledTooltip"
+    matTooltip="{{button_config.enabledTooltip.tooltip_label}}"
+    [matTooltipPosition]="button_config.enabledTooltip.tooltip_position">
+    
+    {{ button_config.label }}
+</button>
+
+<!-- Icon Button -->
+<button 
+    mat-fab
+    [ngStyle]="button_config.customCSS"
+    *ngIf="button_config.mode === 'fab' && button_config.enabledTooltip"
+    matTooltip="{{button_config.enabledTooltip.tooltip_label}}"
+    [matTooltipPosition]="button_config.enabledTooltip.tooltip_position">
+    
+    <mat-icon>{{ button_config.icon }}</mat-icon>
+</button>
+
+<button 
+    mat-icon-button
+    [ngStyle]="button_config.customCSS"
+    *ngIf="button_config.mode === 'icon' && button_config.enabledTooltip"
+    matTooltip="{{button_config.enabledTooltip.tooltip_label}}"
+    [matTooltipPosition]="button_config.enabledTooltip.tooltip_position">
+    
+    <mat-icon>{{ button_config.icon }}</mat-icon>
+</button>
+
+<button 
+    mat-mini-fab
+    [ngStyle]="button_config.customCSS"
+    *ngIf="button_config.mode === 'minifab' && button_config.enabledTooltip"
+    matTooltip="{{button_config.enabledTooltip.tooltip_label}}"
+    [matTooltipPosition]="button_config.enabledTooltip.tooltip_position">
+    
     <mat-icon>{{ button_config.icon }}</mat-icon>
 </button>

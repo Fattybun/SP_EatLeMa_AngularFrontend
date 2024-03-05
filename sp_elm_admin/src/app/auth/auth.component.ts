@@ -36,12 +36,12 @@ export class AuthComponent {
   }
 
   // Reusable button
-  // signinButtonConfig: button = {
-  //   mode: 'raised',
-  //   label: 'Reusable testing',
-  //   customCSS: {
-  //     'width': '100%',
-  //     'disabled': 'true'
-  //   }
-  // }
+  signinButtonConfig: button = {
+    mode: 'basic',
+    label: 'Reusable testing',
+    customCSS: {
+      'width': '100%',
+      'disabled': 'true'
+    }
+  }
 }
